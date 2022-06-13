@@ -5,8 +5,11 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from .models import Profile, Project
 
-app_name= 'app'
+
+
+
 
 def register_request(request):
 	if request.method == "POST":
@@ -40,6 +43,8 @@ def login_request(request):
 	return render(request=request, template_name="registration/login.html", context={"login_form":form})
 
 
-@login_required()
+
 def home(request):
-    return HttpResponse('Welcome to the world of Awards - Vote your project!')
+    profile = Profile.objects.all()
+    projects = Project.objects.all()
+    return render(request, 'index.html', {"profile": profile, "projects": projects})
