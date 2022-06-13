@@ -33,3 +33,31 @@ class RatesTestCase(TestCase):
 
     def test_instance(self):
         self.assertTrue(isinstance(self.rate, Rates))
+
+class ProjectTestClass(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user("username", "password")
+        self.new_profile = Profile(id=1, profile_pic='profile.jpg', bio='this is a test profile',contact='0722222222',user=self.user)
+        self.new_profile.save()
+        self.new_project = Project(image='profile.png',title="image",url='http', description='test profile description', date='13/06/2022',
+        profile=self.new_profile)
+
+    def test_instance_true(self):
+        self.assertTrue(isinstance(self.new_project, Project))
+
+    def test_save_project(self):
+        self.new_project.save_project()
+        prj = Project.objects.all()
+        self.assertTrue(len(prj) == 1)
+
+    def test_delete_project(self):
+        self.new_project.save_project()
+        self.new_project.delete_project()
+        img = Profile.objects.all()
+        self.assertTrue(len(img) <= 1)
+
+    def test_project_by_id(self):
+        self.new_project.save_project()
+        prj = self.new_project.project_by_id(self.new_project.id)
+        images = Project.objects.filter(id=self.new_project.id)
+        self.assertTrue(prj, images)
