@@ -15,8 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import re_path, include
+from django_registration.backends.one_step.views import RegistrationView
+from django.contrib.auth import views as auth_views
+from app import views 
+
+app_name = "app" 
 
 urlpatterns = [
     re_path('admin/', admin.site.urls),
     re_path(r"^", include("app.urls")),
+       re_path('accounts/register/',
+          RegistrationView.as_view(success_url='/'),
+          name='django_registration_register'),
+   re_path('accounts/', include('django_registration.backends.one_step.urls')),
+   re_path('accounts/', include('django.contrib.auth.urls')),
+   re_path('logout/',auth_views.LogoutView.as_view(template_name = 'registration/login.html'), name = 'logout'),
+   re_path('password-change/', auth_views.PasswordResetView.as_view(), name='password_change'),
 ]
