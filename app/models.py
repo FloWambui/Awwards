@@ -19,4 +19,32 @@ class Profile(models.Model):
     def delete_profile(self):
         self.delete()
 
-  
+    def update_profile(cls, id):
+        Project.objects.get(user_id=id)
+
+
+class Project(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=150)
+    image = CloudinaryField('images')
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    url = models.URLField(blank=True)
+    description = models.TextField(max_length=300, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+    location = models.CharField(max_length=80, default='Nrb. Kenya')
+
+    def __str__(self):
+        return self.title
+
+    def save_project(self):
+        return self.save()
+
+    def delete_project(self):
+        self.delete()
+
+    @classmethod
+    def project_by_id(cls, id):
+        project = Project.objects.filter(id=id)
+        return project
+
+
