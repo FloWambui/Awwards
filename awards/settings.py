@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,6 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+
+
+
+cloudinary.config( 
+  cloud_name = "flowambui", 
+  api_key = "223871825289445", 
+  api_secret = "mVXg7vALtkWComzR68K1HKsaO-Q" 
+)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-z&z@af9u(a!%_nih1%n=s=nyww$^!pje4bjsqxdw%v!4jgv*!l'
