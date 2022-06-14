@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http  import HttpResponse, HttpResponseRedirect
-from .forms import NewUserForm, UpdateProfileForm, UpdateUserForm
+from .forms import NewUserForm, ProjectForm, UpdateProfileForm, UpdateUserForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -89,40 +89,18 @@ def update_profile(request):
     return render(request, "profileupdate.html", {"user_form": user_form, "profile_form": profile_form })
 
 
+@login_required
+def post_project(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            post_project = form.save(commit=False)
+            post_project.user = current_user
+            post_project.save()
+            return redirect('app:homepage')
+    else:
+        form = ProjectForm()
+    return render(request, 'projects.html', {"form": form})
 
 
-#     def updateprofile(request):
-#     projects = Project.objects.all()
-#     posts = Profile.objects.all()
-#     if request.method == 'POST':
-#         user_form = UpdateUserForm(request.POST, instance=request.user)
-#         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
-#         if user_form.is_valid() and profile_form.is_valid():
-#             user_form.save()
-#             profile_form.save()
-#             messages.success(request, f'Your account has been successfully updated')
-#             return redirect('profile')
-#     else:
-#         user_form = UpdateUserForm(instance=request.user)
-#         profile_form = UpdateProfileForm(instance=request.user.profile)
-
-#     context = {
-#     'user_form':user_form,
-#     'profile_form':profile_form,
-#     'posts':posts,
-#     'projects':projects,
-#     }
-
-#     return render(request, 'profileupdate.html', context)
-
-# def update_profile(request, id):
-#     obj = get_object_or_404(Profile, user_id=id)
-#     obj2 = get_object_or_404(User, id=id)
-#     form = UpdateProfileForm(request.POST or None, request.FILES, instance=obj)
-#     form2 = UpdateUserForm(request.POST or None, instance=obj2)
-#     if form.is_valid() and form2.is_valid():
-#         form.save()
-#         form2.save()
-#         return HttpResponseRedirect("/profile")
-
-#     # return render(request, "registration/update_profile.html", {"form": form, "form2": form2})

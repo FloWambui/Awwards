@@ -11,4 +11,5 @@ urlpatterns=[
     re_path("logout", views.logout_request, name= "logout"),
     re_path('profile/',views.profile, name='profile'),
     re_path('updateprofile/', views.update_profile, name='update_profile'),
+    re_path('upload/',views.post_project,name='post_prj'),
 ]

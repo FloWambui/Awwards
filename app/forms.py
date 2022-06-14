@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from crispy_forms.helper import FormHelper
-from .models import Profile
+from .models import Profile, Project
 
 
 class NewUserForm(UserCreationForm):
@@ -33,3 +33,9 @@ class UpdateUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email')
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        exclude = ['user', 'profile', 'date']
