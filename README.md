@@ -13,9 +13,9 @@ In this application user/developer is able to post/upload his project and also r
 
 
 #### API EndPoints    
-[Profile API EndPoints](http://127.0.0.1:8000/api/profiles)
+[Profile API EndPoints](https://awwwardzs.herokuapp.com/api/profiles)
 
-[Projects API EndPoints](http://127.0.0.1:8000/api/projects) 
+[Projects API EndPoints](https://awwwardzs.herokuapp.com/api/projects) 
 
 
 #### Technology Used
@@ -31,7 +31,7 @@ The following languages have been used on this project:
 
 
 
-- Live link to view the project <a target="_blank" href="">Awwards</a>
+- Live link to view the project <a target="_blank" href="https://awwwardzs.herokuapp.com/">Awwards</a>
 
 
 #### User Stories
