@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
-{%block content%}
 {% load bootstrap5 %}
 {% load static %}
-
+{%block content%}
 <div class="container">
     <div class="row">
         <div class="col-md-1">
@@ -50,35 +49,49 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <h3 class="text-center mt-3">Scores</h3>
+            <h3 class="text-center">Scores</h3>
+            <br>
             <hr>
-            <div class="col-md-12">
+            <br>
+            <div class="col-md-12" style="display: flex; flex-direction:row">
+                <div class="col-md-3" id="c">
+                    <span class="text-danger">Average</span>
+                </div>
+                <div class="col-md-2" id="c">
+                    <span class="text-danger">Design</span>
+                </div>
+                <div class="col-md-2" id="c">
+                    <span class="text-danger">Usability</span>
+                </div>
+                <div class="col-md-2" id="c">
+                    <span class="text-danger">Content</span>
+                </div>
+                <div class="col-md-3" id="c">
+                    <span class="text-danger">Rated by</span>
+                </div>
+            </div>
+
             {% for reviews in reviews %}
-            
+            <div class="col-md-12" style="display: flex; flex-direction:row">
                 {% if project.id == reviews.project.id %}
 
-                <div class="col-md-3">
-                    <span class="text-muted px-4">Average :</span>
+                <div class="col-md-3" id="c">
                     <span class="sc">{{ reviews.average  }}</span>
                 </div>
-                <div class="col-md-3">
-                    <span class="text-muted px-4">Design :</span>
+                <div class="col-md-2">
                     <span class="sc">{{ reviews.design }}</span>
                 </div>
-                <div class="col-md-3">
-                    <span class="text-muted px-4">Usability :</span>
+                <div class="col-md-2" id="u">
                     <span class="sc">{{ reviews.usability }}</span>
                 </div>
-                <div class="col-md-3" >
-                    <span class="text-muted px-4">Content :</span>
+                <div class="col-md-2" id="c">
                     <span class="sc">{{ reviews.content }}</span>
                 </div>
-                <div class="col-md-3">
-                    <span class="text-muted px-4 pt-4">Rated by:</span>
+                <div class="col-md-3" id="c">
                     <span class="sc">{{ reviews.user.username }}</span>
                 </div>
 
-
+                <!-- {% widthratio reviews.average ratings|length 1%} -->
 
                 {% endif %}
             </div>
@@ -87,5 +100,5 @@
             <div class="col-md-2"></div>
         </div>
     </div>
-
-    {% endblock %}
+</div>
+{% endblock %}
