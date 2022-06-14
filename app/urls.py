@@ -12,4 +12,6 @@ urlpatterns=[
     re_path('profile/',views.profile, name='profile'),
     re_path('updateprofile/', views.update_profile, name='update_profile'),
     re_path('upload/',views.post_project,name='post_prj'),
+    re_path('project_info/(?P<id>\d+)', views.view_project, name='viewProject'),
+
 ]
