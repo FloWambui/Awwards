@@ -10,4 +10,5 @@ urlpatterns=[
     re_path("login", views.login_request, name="login"),
     re_path("logout", views.logout_request, name= "logout"),
     re_path('profile/',views.profile, name='profile'),
+    re_path('updateprofile/', views.update_profile, name='update_profile'),
 ]
