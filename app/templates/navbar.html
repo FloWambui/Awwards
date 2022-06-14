@@ -17,17 +17,28 @@
                             class="fa-solid fa-user"></i><span><br>Admin</span></a>
                 </li>
 
+                {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link active text-center" href aria-current="page" href="/admin"><i
-                        class="fa-solid fa-award"></i><span><br>Profile</span></a>
+                    <a class="nav-link active text-center" href aria-current="page" href=""><i
+                            class="fa-solid fa-award"></i><span><br>Profile</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-center" href aria-current="page" href="/logout"><i
+                            class="fa-solid fa-right-from-bracket"></i><span><br>Logout</span></a>
+                </li>
+                {% else %}
 
                 <li class="nav-item">
-                    <a class="nav-link active text-center" href aria-current="page" href="/logout"><i class="fa-solid fa-right-from-bracket"></i><span><br>Logout</span></a>
+                  <a class="nav-link" href="/login">Login</a>
                 </li>
+          
+                {% endif %}
 
             </ul>
-     
+
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-warning" type="submit">Search</button>
