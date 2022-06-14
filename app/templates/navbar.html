@@ -9,24 +9,21 @@
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-5 px-5" style="border: 3px solid red;">
                 <li class="nav-item">
-                    <a class="nav-link active text-center" href aria-current="page" href="#"><i
+                    <a class="nav-link active text-center px-3"  href="#"><i
                             class="fa-solid fa-plus-circle"></i><span><br>Add Project</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active text-center" href aria-current="page" href="/admin"><i
+                    <a class="nav-link active text-center px-3"  href="/admin"><i
                             class="fa-solid fa-user"></i><span><br>Admin</span></a>
                 </li>
 
                 {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link active text-center" href aria-current="page" href=""><i
+                <li class="nav-link active text-center px-3 mx-5">
+                    <a href="{% url 'app:profile' %}"><i
                             class="fa-solid fa-award"></i><span><br>Profile</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Welcome, {{user.username}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active text-center" href aria-current="page" href="/logout"><i
+                <li class="nav-link active text-center px-5 text-white">
+                    <a href="/logout"><i
                             class="fa-solid fa-right-from-bracket"></i><span><br>Logout</span></a>
                 </li>
                 {% else %}

@@ -45,7 +45,7 @@ def login_request(request):
 def logout_request(request):
 	logout(request)
 	messages.info(request, "You have successfully logged out.") 
-	return redirect("main:homepage")
+	return redirect("app:homepage")
 
 
 
@@ -53,3 +53,9 @@ def home(request):
     profile = Profile.objects.all()
     projects = Project.objects.all()
     return render(request, 'index.html', {"profile": profile, "projects": projects})
+
+@login_required
+def profile(request):
+    current_user = request.user
+    projects = Project.objects.filter(user=current_user.id).all
+    return render(request, 'profile.html', {"projects": projects})
