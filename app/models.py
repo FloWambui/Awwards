@@ -47,6 +47,10 @@ class Project(models.Model):
         project = Project.objects.filter(id=id)
         return project
 
+    @classmethod
+    def search_project(cls, name):
+        return cls.objects.filter(title__icontains=name).all()
+
 
 class Rates(models.Model):
     RATE_CHOICES = (
