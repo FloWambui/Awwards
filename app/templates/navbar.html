@@ -29,7 +29,7 @@
                 {% else %}
 
                 <li class="nav-item">
-                  <a class="nav-link" href="/login">Login</a>
+                  <a class="nav-link active text-center px-3" href="/login"><i class="fa-solid fa-mars-stroke-up"></i><span><br>LogIn</span></a>
                 </li>
           
                 {% endif %}
@@ -37,7 +37,7 @@
             </ul>
 
             <form class="d-flex" role="search" action="{% url 'app:search' %}">
-                <input class="form-control me-2" type="search" placeholder="Search" name="project">
+                <input class="form-control me-2" type="search" placeholder="Search by Project Title" name="project">
                 <button class="btn btn-outline-warning" type="submit">Search</button>
             </form>
         </div>

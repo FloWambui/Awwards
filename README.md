@@ -1,6 +1,6 @@
-# Awwards
+# Awwards.
 
-##### By Florence Wambui
+##### By Florence Wambui.
 
 
 ![Homepage](/static/images/homepage.png)

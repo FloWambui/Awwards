@@ -35,20 +35,6 @@ body {
 .intro hr {
   width: 150px;
 }
-/* .intro {
-  color: black;
-  width: 60%;
-  padding: 20px;
-  margin: auto;
-  margin-top: 40px;
-}
-
-.intro h1 {
-  font-size: 54pt;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  color: coral;
-} */
 .fadeoverlay {
   position: relative;
 }
