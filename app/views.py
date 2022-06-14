@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http  import HttpResponse, HttpResponseRedirect
+from django.http  import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from .forms import NewUserForm, ProjectForm, RatingsForm, UpdateProfileForm, UpdateUserForm
 from django.contrib.auth import login, authenticate, logout
@@ -11,7 +11,9 @@ from django.contrib.auth.models import User
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProfileSerializer, ProjectSerializer
 
 
 
@@ -153,3 +155,10 @@ def search(request):
     else:
         message = "You haven't searched for anything, please try again"
     return render(request, 'search.html', {'message': message})
+
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        allprofiles = Profile.objects.all()
+        serializer = ProfileSerializer(allprofiles, many=True)
+        return Response(serializer.data)

@@ -13,7 +13,7 @@ In this application user/developer is able to post/upload his project and also r
 
 
 #### API EndPoints    
-[Profile API EndPoints]()
+[Profile API EndPoints](http://127.0.0.1:8000/api/profiles)
 
 [Projects API EndPoints]() 
 
